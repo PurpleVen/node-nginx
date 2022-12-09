@@ -1,11 +1,11 @@
-#Deploy the Node.Js App to Nginx Server
+# Deploy the Node.Js App to Nginx Server
 
-##Specification - Ubuntu’s latest version – 20.04.
+## Specification - Ubuntu’s latest version – 20.04.
 
 Now, you are required to have an SSH to your server while using Hostinger. You will be able to see the server’s IP address on the right-hand side. You can keep SSH as root.
 - `ssh root@42.35.40.01`
 
-##Install MySQL Database
+## Install MySQL Database
 Its installation process is the same as other Debian (Ubuntu) packages throughout the apt.
 
 - `sudo apt update`
@@ -23,7 +23,7 @@ Now, connect the server with the MySQL client.
 Now, we have successfully configured the Database Server without any errors.
 - `mysql quit`
 
-##Nginx Reverse Proxy
+## Nginx Reverse Proxy
 Here, we use Nginx reverse proxy to receive multiple requests from clients and serve it to different servers. We will use the Nodejs server here.
 
 Now is the time to install Nginx.
@@ -138,7 +138,7 @@ Now, restart the Nginx for the new config for the modification.
 
 Now, try to browse the address of the server’s IP or domain name. You will be able to view the test page of the sample webpage served back to you. So, the Nginx server is running successfully behind the ufw firewall.
 
-##Install Node
+## Install Node
 
 Here, we will use NVM, which you can download from GitHub. Generally, you can install Node from the apt package manager, but it will not let you install the latest version.
 
@@ -164,7 +164,7 @@ Now install Node and NPM using NVM with the following code.
 Then Node and NPM commands will be available across the command line.
 - `node -v`
 
-##Install PM2 and Cloning Repo
+## Install PM2 and Cloning Repo
 
 PM2 is a NodeJs process manager. It tracks your running Node process to make a debug easier. Also, it shows the log files of running apps.
 
@@ -200,7 +200,7 @@ Once you are done with this process, you will get a table showing the running/st
 
 - `pm2 ls`
 
-##Configure Reverse Proxy
+## Configure Reverse Proxy
 
 The Nginx configuration is already added with a simple index.html page.
 
@@ -239,9 +239,9 @@ Finally, everything is covered, and the setup is complete.
 
 You have deployed a NodeJs application on the server.
 
-##Auto startup after restarting the server (pm2)
+## Auto startup after restarting the server (pm2)
 
-###Generate PM2 Start Script for Init System
+### Generate PM2 Start Script for Init System
 
 PM2 is designed to work with the default init system on a Linux system (which it can auto-detect) to generate the startup script and configure PM2 as a service that can be restarted at system boot.
 
@@ -257,7 +257,7 @@ To confirm that the PM2 startup service is up and running under systemd, run the
 
 - `systemctl status pm2-root.service`
 
-###Start Node.js Applications/Processes (ignore this step as node js has already been started)
+### Start Node.js Applications/Processes (ignore this step as node js has already been started)
 
 Next, you want to start your Node.js applications using PM2 as follows. If you already have them up and running, started via PM2, you can skip this step:
 - `cd /var/www/backend/api-v1-staging/`
@@ -267,7 +267,7 @@ Next, you need to register/save the current list of processes you want to manage
 
 - `pm2 save`
 
-###Verify PM2 Auto Starting Node.js Apps at Boot
+### Verify PM2 Auto Starting Node.js Apps at Boot
 
 - `pm2 ls`
     or
@@ -282,3 +282,10 @@ Disable the Startup System
 - `pm2 unstartup`
     or
 - `pm2 startup systemd`
+
+
+>Links - 
+- > https://hackernoon.com/a-tutorial-to-deploy-the-nodejs-app-to-nginx-server
+- > https://www.tecmint.com/enable-pm2-to-auto-start-node-js-app/#:~:text=PM2%20is%20designed%20to%20work,be%20restarted%20at%20system%20boot.&text=The%20startup%20sub%2Dcommand%20tells,and%20enable%20the%20startup%20system
+
+
